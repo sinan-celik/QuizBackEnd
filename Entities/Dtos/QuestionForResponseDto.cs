@@ -8,11 +8,16 @@ namespace Entities.Dtos
     public class QuestionForResponseDto : IDto
     {
         public int response_code { get; set; }
-        public List<Results> results { get; set; }
+        public List<QuestionResults> results { get; set; }
+
+        public QuestionForResponseDto()
+        {
+            results = new List<QuestionResults>();
+        }
 
     }
 
-    public class Results : IDto
+    public class QuestionResults : IDto
     {
         public string category { get; set; }
         public string type { get; set; }
@@ -20,6 +25,11 @@ namespace Entities.Dtos
         public string question { get; set; }
         public string correct_answer { get; set; }
         public List<string> incorrect_answers { get; set; }
+
+        public QuestionResults()
+        {
+            incorrect_answers = new List<string>();
+        }
 
     }
 

@@ -21,35 +21,34 @@ namespace Business.Concrete
 
         public IDataResult<QuestionForResponseDto> GetQuestionsAndAnswerByProjectCode(string pCode)
         {
-
             var questions = _questionDal.GetQuestionsByProjectCode(pCode);
             var answers = _answerDal.GetAnswerByProjectCode(pCode);
 
-
             var resp = new QuestionForResponseDto();
-            var result = new Results();
+            resp.response_code = 0;
 
-            //{
-            //    Email = userForRegisterDto.Email,
-            //    Name = userForRegisterDto.Name,
-            //    Phone = userForRegisterDto.Phone,
-            //    PasswordHash = passwordHash,
-            //    PasswordSalt = passwordSalt,
-            //    IsActive = true
-            //};
-
-            if (answers.Count > 0)
+            if (questions.Count > 0 && answers.Count > 0)
             {
-                result.incorrect_answers.Add(answers[0].AnswerText);
+                foreach (var q in questions)
+                {
+                    var qresult = new QuestionResults();
+                    qresult.category = "Cities";
+                    qresult.type = "multiple";
+                    qresult.difficulty = "medium";
+                    qresult.question = q.QuestionText;
+                    qresult.correct_answer = answers.Find(x => x.QuestionId == q.Id && x.IsTrue == true).AnswerText;
+
+                    var incorrects = answers.FindAll(x => x.QuestionId == q.Id && x.IsTrue == false);
+
+                    foreach (var ic in incorrects)
+                    {
+                        qresult.incorrect_answers.Add(ic.AnswerText);
+                    }
+
+                    resp.results.Add(qresult);
+                }
+                
             }
-
-
-            if (questions.Count > 0)
-            {
-                resp.response_code = 0;
-                resp.results.Add(result);
-            }
-
 
             return new SuccessDataResult<QuestionForResponseDto>(resp, Messages.RegisterSuccessfull);
         }
