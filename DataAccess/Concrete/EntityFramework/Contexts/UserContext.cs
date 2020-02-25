@@ -13,7 +13,9 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=localhost;Database=QuizDB;Trusted_Connection=True;");
+            //optionsBuilder.UseSqlServer(@"Server=localhost;Database=QuizDB;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=.;Database=QuizDB;User Id=sa2;Password=19873;");
+
         }
 
         public DbSet<User> Users { get; set; }
