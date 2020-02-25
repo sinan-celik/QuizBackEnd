@@ -17,6 +17,9 @@ namespace Business.DependencyResolvers.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<QuestionManager>().As<IQuestionService>();
+            builder.RegisterType<EfQuestionDal>().As<IQuestionDal>();
+            builder.RegisterType<EfAnswerDal>().As<IAnswerDal>();
 
             builder.RegisterType<UserManager>().As<IUserService>();
             builder.RegisterType<EfUserDal>().As<IUserDal>();

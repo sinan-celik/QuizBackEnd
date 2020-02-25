@@ -7,8 +7,8 @@ using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface IUserDal : IEntityRepository<User>
+    public interface IAnswerDal : IEntityRepository<Answer>
     {
-        List<OperationClaim> GetClaims(User user);
+        List<Answer> GetAnswerByProjectCode(string pCode);
     }
 }

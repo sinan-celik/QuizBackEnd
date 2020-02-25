@@ -33,7 +33,7 @@ namespace WebAPI
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Areda Panel API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Quiz API", Version = "v1" });
             });
 
             services.AddControllers();
@@ -80,6 +80,13 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/error");
+            }
+            app.UseStatusCodePages();
+
+
             app.ConfigureCustomExceptionMiddleware();
             app.UseCors(builder => builder.WithOrigins("https://localhost:44351").AllowAnyHeader());
             app.UseHttpsRedirection();

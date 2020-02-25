@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entities.Concrete
 {
-    public class UserDetail:EntityBase,IEntity
+    public class UserDetail : EntityBase, IEntity
     {
         public DateTime BirthDate { get; set; }
         public string IdentityNumber { get; set; }
