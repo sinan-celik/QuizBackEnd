@@ -22,7 +22,8 @@ namespace DataAccess.Concrete.EntityFramework
                              {
                                  Id = q.Id,
                                  ProjectCode = q.ProjectCode,
-                                 QuestionText = q.QuestionText
+                                 QuestionText = q.QuestionText,
+                                 QuestionImage = q.QuestionImage
                              };
 
                 return result.ToList();

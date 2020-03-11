@@ -35,6 +35,7 @@ namespace Business.Concrete
                     qresult.category = "Cities";
                     qresult.type = "multiple";
                     qresult.difficulty = "medium";
+                    qresult.questionImage = q.QuestionImage;
                     qresult.question = q.QuestionText;
                     qresult.correct_answer = answers.Find(x => x.QuestionId == q.Id && x.IsTrue == true).AnswerText;
 
