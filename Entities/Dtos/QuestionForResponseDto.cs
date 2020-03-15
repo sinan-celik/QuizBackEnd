@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,12 +25,13 @@ namespace Entities.Dtos
         public string difficulty { get; set; }
         public string questionImage { get; set; }
         public string question { get; set; }
-        public string correct_answer { get; set; }
-        public List<string> incorrect_answers { get; set; }
+        public string answerType { get; set; }
+        public Answer correct_answer { get; set; }
+        public List<Answer> incorrect_answers { get; set; }
 
         public QuestionResults()
         {
-            incorrect_answers = new List<string>();
+            incorrect_answers = new List<Answer>();
         }
 
     }

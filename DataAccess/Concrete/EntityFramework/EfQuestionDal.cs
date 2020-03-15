@@ -23,7 +23,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  Id = q.Id,
                                  ProjectCode = q.ProjectCode,
                                  QuestionText = q.QuestionText,
-                                 QuestionImage = q.QuestionImage
+                                 QuestionImage = q.QuestionImage,
+                                 AnswerType = q.AnswerType
                              };
 
                 return result.ToList();

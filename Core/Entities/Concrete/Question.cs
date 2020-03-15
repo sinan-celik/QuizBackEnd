@@ -10,5 +10,6 @@ namespace Core.Entities.Concrete
         public string ProjectCode { get; set; }
         public string QuestionText { get; set; }
         public string QuestionImage { get; set; }
+        public string AnswerType { get; set; }
     }
 }

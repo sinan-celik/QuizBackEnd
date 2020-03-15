@@ -24,7 +24,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  ProjectCode = a.ProjectCode,
                                  QuestionId = a.QuestionId,
                                  AnswerText = a.AnswerText,
-                                 IsTrue = a.IsTrue
+                                 IsTrue = a.IsTrue,
+                                 AnswerImage = a.AnswerImage
                              };
 
                 return result.ToList();

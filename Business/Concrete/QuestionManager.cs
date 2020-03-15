@@ -37,13 +37,14 @@ namespace Business.Concrete
                     qresult.difficulty = "medium";
                     qresult.questionImage = q.QuestionImage;
                     qresult.question = q.QuestionText;
-                    qresult.correct_answer = answers.Find(x => x.QuestionId == q.Id && x.IsTrue == true).AnswerText;
+                    qresult.answerType = q.AnswerType;
+                    qresult.correct_answer = answers.Find(x => x.QuestionId == q.Id && x.IsTrue == true);
 
                     var incorrects = answers.FindAll(x => x.QuestionId == q.Id && x.IsTrue == false);
 
                     foreach (var ic in incorrects)
                     {
-                        qresult.incorrect_answers.Add(ic.AnswerText);
+                        qresult.incorrect_answers.Add(ic);
                     }
 
                     resp.results.Add(qresult);

@@ -11,6 +11,7 @@ namespace Core.Entities.Concrete
         public int QuestionId { get; set; }
         public string AnswerText { get; set; }
         public bool IsTrue { get; set; }
+        public string AnswerImage { get; set; }
 
     }
 }
