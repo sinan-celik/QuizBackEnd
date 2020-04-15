@@ -25,6 +25,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
 
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
+        public DbSet<ProjectQuestions> ProjectQuestions { get; set; }
 
 
         public override int SaveChanges()

@@ -7,21 +7,19 @@ using System.Linq;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfQuestionDal : EfEntityRepositoryBase<Question, UserContext>, IQuestionDal
+    public class EFProjectQuestionsDal : EfEntityRepositoryBase<ProjectQuestions, UserContext>, IProjectQuestionDal
     {
-        public List<Question> GetQuestionsByProjectCode(List<int> qIds)
+        public List<ProjectQuestions> GetProjectQuestionsByProjectCode(string pCode)
         {
             using (var context = new UserContext())
             {
-                var result = from q in context.Questions
-                             where qIds.Contains(q.Id) /*q.Id == pCode*/
-                             select new Question
+                var result = from q in context.ProjectQuestions
+                             where q.ProjectCode == pCode
+                             select new ProjectQuestions
                              {
                                  Id = q.Id,
                                  ProjectCode = q.ProjectCode,
-                                 QuestionText = q.QuestionText,
-                                 QuestionImage = q.QuestionImage,
-                                 AnswerType = q.AnswerType
+                                 QuestionId = q.QuestionId
                              };
 
                 return result.ToList();

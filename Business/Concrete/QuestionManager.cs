@@ -13,15 +13,25 @@ namespace Business.Concrete
     {
         private IQuestionDal _questionDal;
         private IAnswerDal _answerDal;
-        public QuestionManager(IQuestionDal questionDal, IAnswerDal answerDal)
+        private IProjectQuestionDal _projectQuestionDal;
+        public QuestionManager(IQuestionDal questionDal, IAnswerDal answerDal, IProjectQuestionDal projectQuestionDal)
         {
             _questionDal = questionDal;
             _answerDal = answerDal;
+            _projectQuestionDal = projectQuestionDal;
         }
 
         public IDataResult<QuestionForResponseDto> GetQuestionsAndAnswerByProjectCode(string pCode)
         {
-            var questions = _questionDal.GetQuestionsByProjectCode(pCode);
+            var projectQuestions = _projectQuestionDal.GetProjectQuestionsByProjectCode(pCode);
+
+            var qIds = new List<int>();
+            foreach (var pq in projectQuestions)
+            {
+                qIds.Add(pq.Id);
+            }
+
+            var questions = _questionDal.GetQuestionsByProjectCode(qIds);
             var answers = _answerDal.GetAnswerByProjectCode(pCode);
 
             var resp = new QuestionForResponseDto();

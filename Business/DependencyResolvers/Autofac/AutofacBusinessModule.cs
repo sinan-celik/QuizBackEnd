@@ -20,6 +20,7 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<QuestionManager>().As<IQuestionService>();
             builder.RegisterType<EfQuestionDal>().As<IQuestionDal>();
             builder.RegisterType<EfAnswerDal>().As<IAnswerDal>();
+            builder.RegisterType<EFProjectQuestionsDal>().As<IProjectQuestionDal>();
 
             builder.RegisterType<UserManager>().As<IUserService>();
             builder.RegisterType<EfUserDal>().As<IUserDal>();

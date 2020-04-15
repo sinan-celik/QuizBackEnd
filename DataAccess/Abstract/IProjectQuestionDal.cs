@@ -1,14 +1,14 @@
 ﻿using Core.DataAccess;
 using Core.Entities.Concrete;
-using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface IQuestionDal : IEntityRepository<Question>
+    public interface IProjectQuestionDal : IEntityRepository<ProjectQuestions>
     {
-        List<Question> GetQuestionsByProjectCode(List<int> qIds);
+        List<ProjectQuestions> GetProjectQuestionsByProjectCode(string pCode);
+
     }
 }
